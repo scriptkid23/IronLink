@@ -1,29 +1,64 @@
 # IronLink
 
-The combination of "Iron" (an icon of Rust) and "Link" (link) signifies the project's role in linking various services.
+## Overview
 
-# Introduction
+IronLink is a distributed networking library that facilitates the creation of a network of interconnected nodes using the Libp2p protocol. It integrates the Raft consensus algorithm to ensure the synchronization of information across nodes in the network. Additionally, IronLink serves as a library to support the connection between various services configured at the interface layer, enabling seamless communication between different programming languages such as Node.js, Java, etc.
 
-The API Gateway serves as a central entry point for all external requests to our microservices ecosystem. It is responsible for managing north-south traffic, handling requests from external parties, and routing them to the appropriate microservices. The API Gateway acts as a reverse proxy, building upon existing HTTP proxy products to provide additional features and functionality.
+## Features
 
-# Features
+- **Libp2p Integration**: Utilizes the Libp2p protocol for peer-to-peer communication, enabling nodes to discover, connect, and exchange data securely.
+- **Raft Consensus**: Implements the Raft consensus algorithm to achieve agreement among nodes on the state of the distributed system, ensuring fault tolerance and data consistency.
+- **Service Integration**: Provides support for connecting various services configured at the interface layer, allowing for interoperability across different programming languages and environments.
+- **Scalability**: Scales efficiently with the network size and adapts to changing network conditions, ensuring robust performance even as the network grows.
 
-The API Gateway offers the following key features:
+## Installation
 
-Request Routing: The gateway maps incoming requests to the corresponding microservices based on predefined rules and endpoints.
-API Key Management: It provides secure access control by managing API keys and enforcing authentication mechanisms.
-Logging and Monitoring: The gateway logs incoming and outgoing requests and provides monitoring capabilities for performance analysis and troubleshooting.
-Rate Limiting: It implements rate limiting policies to prevent abuse and ensure fair usage of our services.
-Developer Portal: The gateway includes a developer portal to provide documentation, API reference, and interactive tools for external consumers.
+To use IronLink in your Rust project, add it as a dependency in your `Cargo.toml` file:
 
-# License
-
-This project is licensed under the MIT License.
-
-# Support
-
-For any questions or issues, please contact our support team at <hoando.dev@gmail.com>.
-
-```bash
-cargo run --example lab
+```toml
+[dependencies]
+ironlink = "0.1"
 ```
+
+## Example
+
+```rust
+use ironlink::{
+    NodeConfig,
+    IronNode,
+};
+
+fn main() {
+    // Define IronLink node configuration
+    let config = NodeConfig {
+        libp2p_config: Default::default(),
+        raft_config: Default::default(),
+        // Add additional configuration options as needed
+    };
+
+    // Initialize IronNode with the specified configuration
+    let node = IronNode::new(config);
+
+    // Start the IronNode
+    node.start();
+
+    // Perform operations on the IronNode (e.g., send messages, query state)
+}
+
+```
+
+## Contributing
+
+Contributions to IronLink are welcome! If you encounter any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request on GitHub.
+
+## Contact
+
+For any inquiries or support, please contact <hoando.dev@gmail.com>.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+Feel free to enhance this README with additional details or examples to better suit your project's needs.
