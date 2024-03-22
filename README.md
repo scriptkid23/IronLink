@@ -23,3 +23,7 @@ This project is licensed under the MIT License.
 # Support
 
 For any questions or issues, please contact our support team at <hoando.dev@gmail.com>.
+
+```bash
+cargo run --example lab
+```
